@@ -2,21 +2,29 @@ import { Poppins } from 'next/font/google'
 import Header from '@/components/Header'
 import { useState } from 'react'
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Modal } from '@mui/material';
+import toast, { Toaster } from 'react-hot-toast';
 
 const poppins = Poppins({ weight: '500', subsets: ['latin'] })
 
 export default function Home() {
+  const [accepted, setAccepted] = useState(false);
   const [declined, setDeclined] = useState(false);
   const [timesDeclined, setTimesDeclined] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  timesDeclined == 5 ? alert('já entendi :(') : ''
 
   function handleOpen() {
     setIsModalOpen(true)
   }
   function handleClose() {
     setIsModalOpen(false)
+  }
+
+  function handleToast() {
+    if (timesDeclined == 5) {
+      return toast('É sério? 🥺')
+    } else if (timesDeclined == 10) {
+      return toast('Tudo bem 😞')
+    }
   }
 
   return (
@@ -32,13 +40,14 @@ export default function Home() {
             }}> Sim </button>
 
           <button className={`rounded-full bg-red-400 text-white h-12 w-28 shadow-lg transition-all relative duration-300
-          ${declined && timesDeclined != 5? 'translate-x-40' : ''} `}
+          ${declined ? 'translate-x-40' : ''} `}
             onClick={() => {
 
             }}
             onMouseEnter={() => {
               setDeclined(!declined)
               setTimesDeclined(timesDeclined + 1)
+              handleToast()
             }}
           >Não</button>
         </div>
@@ -55,7 +64,7 @@ export default function Home() {
             justifyContent: 'center'
           }}
         >
-
+          🥰Muito Obrigado!😍
         </DialogTitle>
         <DialogContent
           style={{
@@ -66,7 +75,7 @@ export default function Home() {
           <DialogContentText style={{
             color: '#F87171'
           }}>
-
+            💞Prometo lhe fazer feliz!💘
           </DialogContentText>
         </DialogContent>
         <DialogActions
@@ -75,27 +84,22 @@ export default function Home() {
             display: 'flex',
             justifyContent: 'center'
           }}>
-          <Button onClick={() => handleClose()}
+          <Button onClick={() => {
+            handleClose()
+            setAccepted(true)
+          }}
             style={{
               color: '#F87171',
               textDecoration: 'none',
             }}>
-            close
+            te amo!💖
           </Button>
         </DialogActions>
       </Dialog>
 
-      <Modal
-        open={isModalOpen}
-        onClose={handleClose}
-      >
-        <Box sx={{ width: 400 }}>
-          <h2 >🥰Muito Obrigado!😍</h2>
-          <p>
-            💞Prometo lhe fazer feliz!💘
-          </p>
-        </Box>
-      </Modal>
+      <Toaster
+        position='bottom-center'
+      />
     </main>
   )
 }

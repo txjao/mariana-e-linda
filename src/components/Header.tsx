@@ -16,11 +16,12 @@ export default function Header() {
                 priority={true}
                 alt='mike'
                 className={`origin-center transition-all duration-200
-                ${ timesHovered % 3 == 0? 'hover:rotate-360' : 'hover:rotate-180'}`}
+                ${ timesHovered > 0 ?  timesHovered % 3 == 0 ? 'hover:rotate-180' : 'hover:rotate-360' : ''}`}
                 onMouseEnter={ () => {
                     setTimesHovered(timesHovered + 1)
                 }}
             />
+
         </div>
     );
 }

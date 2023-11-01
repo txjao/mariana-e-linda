@@ -14,7 +14,9 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },rotate: {
         '360': '360deg',
-      },
+      },bg:{
+        'pink':'#ffc4d8'
+      }
     },
   },
   plugins: [],

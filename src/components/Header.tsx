@@ -1,15 +1,24 @@
 import Image from 'next/image'
 import mike from '../assets/mike.png'
+import wazowski from '../assets/wazowski.png'
 import { useState } from 'react';
 
-export default function Header() {
+interface HeaderProps {
+    declined: boolean;
+}
+
+export default function Header(props: HeaderProps) {
     const [timesHovered, setTimesHovered] = useState(0)
 
+    const handleChangeImage = () => {
+       return props.declined ? wazowski :mike
+    }
+    
     return (
         <div className="flex justify-center items-center h-24 w-full bg-white shadow-lg gap-3">
             <h1 className="text-4xl font-semibold text-red-400 uppercase">namora comigo?</h1>
             <Image
-                src={mike}
+                src={handleChangeImage()}
                 width={40}
                 height={40}
                 quality={100}

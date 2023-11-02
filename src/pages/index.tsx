@@ -85,7 +85,9 @@ export default function Home() {
               })
             }}
             onMouseEnter={() => {
-              setTimesDeclined(timesDeclined + 1)
+              if(timesDeclined == 9){
+                  setTimesDeclined(timesDeclined + 1)
+              }
             }}
           > Sim </button>
 

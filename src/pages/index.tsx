@@ -40,7 +40,7 @@ export default function Home() {
     }
   }
 
-  
+
 
   return (
     <main className={poppins.className}>
@@ -57,7 +57,15 @@ export default function Home() {
               height={96}
               quality={100}
               priority={true}
-              alt='mumu tristinho'
+              alt='mumu tristinho pedindo desculpa por ser homem'
+              onClick={()=>{
+                Swal.fire({
+                  title: 'Desculpa por ser homem!😭',
+                  confirmButtonText: ':(',
+                  timer: 5000,
+                  timerProgressBar: true,
+                })
+              }}
             />
             <p className='text-8xl'>💔</p>
           </div>
@@ -67,8 +75,7 @@ export default function Home() {
           <button className=' rounded-full bg-white h-12 w-28 shadow-lg transition hover:bg-red-400 hover:text-white duration-200	z-10'
             onClick={async () => {
               Swal.fire({
-                title: 'Muito Obrigado!😍',
-                text: 'Prometo lhe fazer feliz!💞',
+                title: 'Prometo lhe fazer feliz!💞',
                 imageUrl: 'https://www.visaooeste.com.br/wp-content/uploads/2020/06/a-noiva-cad%C3%A1ver-netflix--e1591385014142.jpg',
                 imageWidth: 400,
                 imageHeight: 200,
@@ -76,10 +83,14 @@ export default function Home() {
                 timer: 10000,
                 timerProgressBar: true,
               })
-            }}> Sim </button>
+            }}
+            onMouseEnter={() => {
+              setTimesDeclined(timesDeclined + 1)
+            }}
+          > Sim </button>
 
           <button className={`rounded-full bg-red-400 text-white h-12 w-28 shadow-lg transition-all relative duration-500
-          ${timesDeclined > 0 ? timesDeclined % 2 == 0 ? 'translate-x-40' : '-translate-x-' : 'translate-x-0'} `}
+          ${timesDeclined != 9 ? timesDeclined % 2 == 0 ? '-translate-x-0' : 'translate-x-40 ' : 'translate-x-50'}`}
             onClick={() => {
               setDeclined(true)
               window.location.assign('https://www.youtube.com/watch?v=LbLbkAMjPeM')

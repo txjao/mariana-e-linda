@@ -16,7 +16,9 @@ const config: Config = {
         '360': '360deg',
       },bg:{
         'pink':'#ffc4d8'
-      }
+      },translate:{
+        '50' : '-13rem'
+      },
     },
   },
   plugins: [],

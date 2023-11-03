@@ -63,22 +63,26 @@ export default function Home() {
             <p className='text-8xl'>💔</p>
           </div>
         )}
-        <p className='text-5xl text-red-400'><p onClick={() => {
+        <div className='flex'>
+        <p className='text-5xl text-red-400'onClick={() => {
           Swal.fire({
             title: 'A MAIS LINDA DO MUNDO!',
             confirmButtonText: '♥️',
             timer: 5000,
             timerProgressBar: true,
           })
-        }}>Mary</p>, você aceita namorar comigo?<p onClick={() => {
+        }}>Mary</p>
+        <p className='text-5xl text-red-400'>, você aceita namorar comigo?
+        </p>
+        <p className='text-5xl' onClick={() => {
           Swal.fire({
             title: 'Cuzinho hj?',
             confirmButtonText: 'heheh',
             timer: 5000,
             timerProgressBar: true,
           })
-        }}>💍</p>
-        </p>
+        }}>💍</p> 
+        </div>
         <div className='flex justify-between w-80 h-40 mt-4'>
           <button className=' rounded-full bg-white h-12 w-28 shadow-lg transition hover:bg-red-400 hover:text-white duration-200	z-10'
             onClick={async () => {

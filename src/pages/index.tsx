@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import amumu from '../assets/amumu.png'
 import Image from 'next/image'
 import router from 'next/router';
+import Draggable from 'react-draggable';
 
 const poppins = Poppins({ weight: '500', subsets: ['latin'] })
 
@@ -40,7 +41,18 @@ export default function Home() {
       <Header declined={timesDenied >= 10 ? true : false} />
       <div className={`flex min-h-screen flex-col items-center justify-center p-24`}>
         {timesDenied < 15 && (
-          <p className='text-8xl text-red-400'>🤔♥️</p>
+          <div className='flex'>
+            <div className='flex flex-col items-center justify-center'>
+              <span className='relative top-10'
+                onClick={async () => {
+                  await router.push('/three-months')
+                }}>hehe</span>
+              <Draggable>
+                <p className='text-8xl relative bottom-6'>🤔</p>
+              </Draggable>
+            </div>
+            <p className='text-8xl text-red-400'>♥️</p>
+          </div>
         )}
         {timesDenied >= 15 && (
           <div className={`flex transition-all ${timesDenied >= 15 ? 'scale' : ''}`}>
@@ -64,24 +76,17 @@ export default function Home() {
           </div>
         )}
         <div className='flex'>
-        <p className='text-5xl text-red-400'onClick={() => {
-          Swal.fire({
-            title: 'A MAIS LINDA DO MUNDO!',
-            confirmButtonText: '♥️',
-            timer: 5000,
-            timerProgressBar: true,
-          })
-        }}>Mary</p>
-        <p className='text-5xl text-red-400'>, você aceita namorar comigo?
-        </p>
-        <p className='text-5xl' onClick={() => {
-          Swal.fire({
-            title: 'Cuzinho hj?',
-            confirmButtonText: 'heheh',
-            timer: 5000,
-            timerProgressBar: true,
-          })
-        }}>💍</p> 
+          <p className='text-5xl text-red-400' onClick={() => {
+            Swal.fire({
+              title: 'A MAIS LINDA DO MUNDO!',
+              confirmButtonText: '♥️',
+              timer: 5000,
+              timerProgressBar: true,
+            })
+          }}>Mary</p>
+          <p className='text-5xl text-red-400'>, você aceita namorar comigo?
+          </p>
+          <p className='text-5xl'>💍</p>
         </div>
         <div className='flex justify-between w-80 h-40 mt-4'>
           <button className=' rounded-full bg-white h-12 w-28 shadow-lg transition hover:bg-red-400 hover:text-white duration-200	z-10'

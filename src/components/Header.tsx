@@ -31,7 +31,6 @@ export default function Header(props: HeaderProps) {
                     setTimesHovered(timesHovered + 1)
                 }}
             />
-
         </header>
     );
 }

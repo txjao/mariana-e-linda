@@ -13,7 +13,7 @@ export default function Aceppted() {
             <div>
                 <div className={`flex min-h-screen flex-col items-center justify-center`}>
                     <div className="flex items-center">
-                        <h1 className='text-5xl'>Que esses 3 meses se torne a vida toda!💞</h1>
+                        <h1 className='text-5xl'>Que esses 3 meses se torne a vida toda!</h1>
                         <Image
                             src={beijocas}
                             width={64}
